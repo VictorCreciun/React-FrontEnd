@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import MyImg from "../img/4Real.png";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PersonIcon from "@mui/icons-material/Person";
 // import Wishlist from "../pages/Wishlist";
 
@@ -48,9 +49,12 @@ const Input = styled.input`
   color: white;
   background-color: #131313;
 `;
-const Cart = styled.button`
+const Wishlist = styled.button`
   cursor: pointer;
   padding-left: 25px;
+  background-color: #131313;
+  border: none;
+  color: white;
 `;
 // const WishList = styled.div`
 //   cursor: pointer;
@@ -60,13 +64,23 @@ const AccountIcon = styled.div`
   padding-left: 25px;
   padding-top: 5px;
 `;
-
-const LogOut = styled.button`
-  cursor: pointer;
-  padding-left: 100px;
-  padding-top: 5px;
+const LogOut = styled.div`
+  width: 60px;
+  background-color: #131313;
+  padding-left: 25px;
+  padding-top: 7px;
+  color: white;
 `;
-
+const LogOutButt = styled.button`
+  cursor: pointer;
+  width: 60px;
+  background-color: #131313;
+  border: none;
+  color: white;
+`;
+const P = styled.p`
+  font-size: 12px;
+`;
 Img.defaultProps = {
   src: MyImg,
 };
@@ -96,33 +110,39 @@ const Navbar = ({ handleLogOutClick, isAuthenticated }) => {
             <Search cursor="pointer" />
           </SearchContainer>
 
-          <AccountIcon
-            onClick={() => {
-              history.push("/login");
-            }}
-          >
-            <PersonIcon />
-          </AccountIcon>
+          {!isAuthenticated ? (
+            <AccountIcon
+              onClick={() => {
+                history.push("/login");
+              }}
+            >
+              <PersonIcon />
+            </AccountIcon>
+          ) : null}
 
-          <LogOut
-            onClick={() => {
-              handleLogOutClick();
-            }}
-          >
-            Log Out
-          </LogOut>
+          {isAuthenticated ? (
+            <LogOut>
+              <LogOutButt
+                onClick={() => {
+                  handleLogOutClick();
+                }}
+              >
+                <P>Log Out</P>
+              </LogOutButt>
+            </LogOut>
+          ) : null}
 
           {/* Wishlist */}
           {isAuthenticated ? (
-            <Cart
+            <Wishlist
               onClick={() => {
                 history.push("/wishlist");
               }}
             >
               {/* <Badge badgeContent={4} color="primary"> */}
-              <ShoppingCartOutlined />
+              <FavoriteBorderIcon />
               {/* </Badge> */}
-            </Cart>
+            </Wishlist>
           ) : null}
         </Right>
       </Wrapper>
