@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import MyImg from "../img/4Real.png";
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import { Search } from "@material-ui/icons";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PersonIcon from "@mui/icons-material/Person";
 // import Wishlist from "../pages/Wishlist";
