@@ -113,6 +113,7 @@ const UserComp = () => {
             />
             <Input
               value={formData.password}
+              type="password"
               name="password"
               placeholder="Password"
               onChange={handleInputChange}
