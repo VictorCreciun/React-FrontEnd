@@ -1,11 +1,12 @@
 import React, { useState, useContext /*useEffect*/ } from "react";
 // import Navbar from "../components/Navbar";
-import Slider from "../components/Slider";
+// import Slider from "../components/Slider";
 // import Categories from "../components/Categories";
 import Games from "../components/Games";
 import styled from "styled-components";
 import Game from "../components/Game";
 import { GamesContext } from "../contexts/GamesContext";
+import LandingPage from "../components/LandingPage";
 
 const Container = styled.div`
   padding: 20px;
@@ -105,7 +106,8 @@ const Home = () => {
 
   return (
     <div>
-      <Slider />
+      <LandingPage />
+      {/* <Slider /> */}
       <Wrapper>
         {categories.map((category, index) => {
           return (
