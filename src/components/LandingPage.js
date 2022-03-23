@@ -4,7 +4,6 @@ import bgImage from "../images/img3.jpg";
 import Navbar from "./Navbar";
 
 const Container = styled.div`
-  position: sticky;
   top: -50px;
   width: 100%;
   min-height: 100vh;
@@ -15,7 +14,6 @@ const Container = styled.div`
 `;
 const Container2 = styled.div`
   background-color: rgba(255, 0, 100, 1);
-  /* position: absolute; */
   opacity: 0.6;
   min-height: 100vh;
 `;
@@ -29,16 +27,12 @@ const Head = styled.p`
   position: absolute;
 `;
 
-// Container.defaultProps = {
-//   src: bgImage,
-// };
-
 const LandingPage = () => {
   return (
     <Container>
       {/* <Head> Let's Game It </Head> */}
       <Container2>
-        <Container3>{/* <Navbar /> */}</Container3>
+        <Container3></Container3>
       </Container2>
     </Container>
   );
