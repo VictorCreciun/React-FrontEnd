@@ -8,13 +8,16 @@ import PersonIcon from "@mui/icons-material/Person";
 // import Wishlist from "../pages/Wishlist";
 
 const Container = styled.div`
+  position: fixed;
   height: 75px;
-  max-width: 100%;
-  background-color: #131313;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  /* background-color: rgb(40, 40, 43); */
+  /* opacity: 0.5; */
 `;
 const Wrapper = styled.div`
   // padding: 22px;
-  color: white;
+  /* color: white; */
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -37,24 +40,21 @@ const Right = styled.div`
   display: flex;
 `;
 const SearchContainer = styled.div`
-  // width: 200px;
-  border: 1px solid white;
+  border: 1px solid black;
   display: flex;
   align-items: center;
-
   padding: 5px;
 `;
 const Input = styled.input`
   border: none;
-  color: white;
-  background-color: #131313;
+  /* color: white; */
+  /* background-color: #131313; */
 `;
 const Wishlist = styled.button`
   cursor: pointer;
   padding-left: 25px;
-  background-color: #131313;
   border: none;
-  color: white;
+  /* color: white; */
 `;
 // const WishList = styled.div`
 //   cursor: pointer;
@@ -66,17 +66,15 @@ const AccountIcon = styled.div`
 `;
 const LogOut = styled.div`
   width: 60px;
-  background-color: #131313;
   padding-left: 25px;
   padding-top: 7px;
-  color: white;
+  /* color: white; */
 `;
 const LogOutButt = styled.button`
   cursor: pointer;
   width: 60px;
-  background-color: #131313;
   border: none;
-  color: white;
+  /* color: white; */
 `;
 const P = styled.p`
   font-size: 12px;
