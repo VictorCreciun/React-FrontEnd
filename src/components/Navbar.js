@@ -44,17 +44,18 @@ const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 5px;
+  color: seashell;
 `;
 const Input = styled.input`
   border: none;
-  /* color: white; */
-  /* background-color: #131313; */
+  background-color: seashell;
 `;
 const Wishlist = styled.button`
   cursor: pointer;
   padding-left: 25px;
   border: none;
-  /* color: white; */
+  color: seashell;
+  background: none;
 `;
 // const WishList = styled.div`
 //   cursor: pointer;
@@ -63,18 +64,19 @@ const AccountIcon = styled.div`
   cursor: pointer;
   padding-left: 25px;
   padding-top: 5px;
+  color: seashell;
 `;
 const LogOut = styled.div`
   width: 60px;
   padding-left: 25px;
   padding-top: 7px;
-  /* color: white; */
 `;
 const LogOutButt = styled.button`
   cursor: pointer;
   width: 60px;
   border: none;
-  /* color: white; */
+  color: seashell;
+  background: none;
 `;
 const P = styled.p`
   font-size: 12px;

@@ -4,7 +4,7 @@ import bgImage from "../images/img3.jpg";
 import Navbar from "./Navbar";
 
 const Container = styled.div`
-  top: -50px;
+  position: relative;
   width: 100%;
   min-height: 100vh;
   background-image: url(${bgImage});
@@ -23,14 +23,29 @@ const Container3 = styled.div`
   opacity: 0.9;
   min-height: 100vh;
 `;
-const Head = styled.p`
+const Banner = styled.div`
   position: absolute;
+  left: 25%;
+  top: 30%;
+  z-index: 1;
+`;
+const Head = styled.p`
+  font-size: 50px;
+  color: seashell;
+`;
+const Desc = styled.p`
+  font-size: 20px;
+  color: seashell;
+  margin-top: 20px;
 `;
 
 const LandingPage = () => {
   return (
     <Container>
-      {/* <Head> Let's Game It </Head> */}
+      <Banner>
+        <Head> Let's Game It! </Head>
+        <Desc>Get every single PC game that you want for a lower price</Desc>
+      </Banner>
       <Container2>
         <Container3></Container3>
       </Container2>
