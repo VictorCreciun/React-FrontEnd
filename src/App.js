@@ -54,6 +54,7 @@ const App = () => {
           handleLogOutClick={handleLogOutClick}
           isAuthenticated={isAuthenticated}
         />
+
         <Switch>
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/action" component={Action}></Route>

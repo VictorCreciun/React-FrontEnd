@@ -8,12 +8,12 @@ import PersonIcon from "@mui/icons-material/Person";
 // import Wishlist from "../pages/Wishlist";
 
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   height: 75px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  /* background-color: rgb(40, 40, 43); */
-  /* opacity: 0.5; */
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  z-index: 1;
 `;
 const Wrapper = styled.div`
   // padding: 22px;
