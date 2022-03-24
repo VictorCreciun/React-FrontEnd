@@ -10,6 +10,7 @@ const Container = styled.div`
   background-image: url(${bgImage});
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   opacity: 1;
 `;
 const Container2 = styled.div`

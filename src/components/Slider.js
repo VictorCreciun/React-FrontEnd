@@ -1,51 +1,102 @@
-// import { Container } from '@chakra-ui/layout';
 import styled from "styled-components";
 import React, { useState, useContext } from "react";
 import { GamesContext } from "../contexts/GamesContext";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
-// const SlideR = styled.section`
-//   position: relative;
-//   height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-// const Img = styled.img`
-//   width: 1000px;
-//   height: 600px;
-//   border-radius: 10px;
-// `;
-// const LeftArrow = styled.div`
-//   position: absolute;
-//   top: 50%;
-//   right: 32px;
-//   font-size: 3rem;
-//   color: #000;
-//   z-index: 10;
-//   cursor: pointer;
-//   user-select: none;
-// `;
-// const RightArrow = styled.div`
-//   position: absolute;
-//   top: 50%;
-//   right: 32px;
-//   font-size: 3rem;
-//   color: #000;
-//   z-index: 10;
-//   cursor: pointer;
-//   user-select: none;
-// `;
+const Container = styled.section`
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Img = styled.img`
+  position: relative;
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  margin-top: 50px;
+  margin-left: 30px;
+`;
+const Wrapper = styled.div``;
+const Card = styled.div`
+  height: 500px;
+  width: 900px;
+  border: 1px solid black;
+`;
 
-// const Container = styled.div`
-//   width: 100%;
-//   height: 100vh;
-//   display: flex;
-//   background-color: #2b2b2b;
-//   position: relative;
-//   overflow: hidden;
-// `;
+const Slider = ({ slides }) => {
+  const [current, setCurrent] = useState(0);
+  const length = slides.length;
+  const { games } = useContext(GamesContext);
 
-const Slider = () => {};
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
+
+  const prevSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current - 1);
+  };
+
+  if (!Array.isArray(slides) || slides.length <= 0) {
+    return null;
+  }
+
+  const Slide = {
+    opacity: "0",
+    transition: "1s ease",
+  };
+
+  const Active = {
+    opacity: "1",
+    transitionDuration: "1s",
+    transform: "scale(1.08)",
+  };
+
+  return (
+    <Container>
+      <FaArrowAltCircleLeft
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "20%",
+          fontSize: "30px",
+          color: "black",
+          cursor: "pointer",
+          zIndex: 10,
+          userSelect: "none",
+        }}
+        onClick={prevSlide}
+      />
+      <FaArrowAltCircleRight
+        style={{
+          position: "absolute",
+          top: "50%",
+          right: "20%",
+          fontSize: "30px",
+          color: "black",
+          cursor: "pointer",
+          zIndex: 10,
+          userSelect: "none",
+        }}
+        onClick={nextSlide}
+      />
+      {games.map((slide, index) => {
+        return (
+          <Wrapper
+            // className={index === current ? Slide && Active : Slide}
+            key={index}
+          >
+            {index === current && (
+              <Card>
+                <Img src={slide.image} />
+              </Card>
+            )}
+          </Wrapper>
+        );
+      })}
+    </Container>
+  );
+};
 
 export default Slider;

@@ -10,21 +10,17 @@ const Wrapper = styled.div`
   position: relative;
   left: 30px;
 `;
-
 const Image = styled.img`
   width: 300px;
   height: 400px;
   object-fit: cover;
 `;
-
 const Title = styled.div`
   color: white;
 `;
-
 const SalePrice = styled.p`
   color: white;
 `;
-
 const InfoWrapper = styled.div`
   width: 300px;
   background-color: #383838;
