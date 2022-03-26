@@ -54,17 +54,6 @@ const Slider = ({ slides }) => {
     return null;
   }
 
-  const Slide = {
-    opacity: "0",
-    transition: "1s ease",
-  };
-
-  const Active = {
-    opacity: "1",
-    transitionDuration: "1s",
-    transform: "scale(1.08)",
-  };
-
   return (
     <Container>
       <FaArrowAltCircleLeft

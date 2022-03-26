@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import MyImg from "../img/4Real.png";
-import { Search } from "@material-ui/icons";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PersonIcon from "@mui/icons-material/Person";
 // import Wishlist from "../pages/Wishlist";
@@ -38,17 +37,6 @@ const Center = styled.div`
 const Right = styled.div`
   padding: 22px;
   display: flex;
-`;
-const SearchContainer = styled.div`
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  color: seashell;
-`;
-const Input = styled.input`
-  border: none;
-  background-color: seashell;
 `;
 const Wishlist = styled.button`
   cursor: pointer;
@@ -97,19 +85,9 @@ const Navbar = ({ handleLogOutClick, isAuthenticated }) => {
               history.push("/");
             }}
           />
-          {/* <Text padding="10px">Game Market</Text> */}
         </Left>
-        <Center>
-          {/* <AccountIcon>
-                                <PersonIcon/>
-                            </AccountIcon> */}
-        </Center>
+        <Center></Center>
         <Right>
-          {/* <SearchContainer>
-            <Input />
-            <Search cursor="pointer" />
-          </SearchContainer> */}
-
           {!isAuthenticated ? (
             <AccountIcon
               onClick={() => {
