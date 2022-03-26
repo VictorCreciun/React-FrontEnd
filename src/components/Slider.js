@@ -5,24 +5,36 @@ import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
 const Container = styled.section`
   position: relative;
+  padding-top: 700px;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
 const Img = styled.img`
-  position: relative;
+  position: absolute;
   width: 300px;
   height: 400px;
   object-fit: cover;
   margin-top: 50px;
   margin-left: 30px;
+  z-index: 9;
 `;
 const Wrapper = styled.div``;
 const Card = styled.div`
   height: 500px;
   width: 900px;
   border: 1px solid black;
+  background-color: black;
+  /* opacity: 0.9; */
+`;
+const CardContainer = styled.div`
+  position: relative;
+  height: 500px;
+  width: 900px;
+  background-color: #1c2e4a;
+  opacity: 0.5;
 `;
 
 const Slider = ({ slides }) => {
@@ -58,7 +70,7 @@ const Slider = ({ slides }) => {
       <FaArrowAltCircleLeft
         style={{
           position: "absolute",
-          top: "50%",
+          top: "70%",
           left: "20%",
           fontSize: "30px",
           color: "black",
@@ -71,7 +83,7 @@ const Slider = ({ slides }) => {
       <FaArrowAltCircleRight
         style={{
           position: "absolute",
-          top: "50%",
+          top: "70%",
           right: "20%",
           fontSize: "30px",
           color: "black",
@@ -90,6 +102,7 @@ const Slider = ({ slides }) => {
             {index === current && (
               <Card>
                 <Img src={slide.image} />
+                <CardContainer></CardContainer>
               </Card>
             )}
           </Wrapper>

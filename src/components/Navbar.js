@@ -105,10 +105,10 @@ const Navbar = ({ handleLogOutClick, isAuthenticated }) => {
                             </AccountIcon> */}
         </Center>
         <Right>
-          <SearchContainer>
+          {/* <SearchContainer>
             <Input />
             <Search cursor="pointer" />
-          </SearchContainer>
+          </SearchContainer> */}
 
           {!isAuthenticated ? (
             <AccountIcon

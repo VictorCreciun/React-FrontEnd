@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import bgImage from "../images/img3.jpg";
-import Navbar from "./Navbar";
 
 const Container = styled.div`
-  position: relative;
+  position: fixed;
   width: 100%;
   min-height: 100vh;
   background-image: url(${bgImage});
@@ -27,7 +26,7 @@ const Container3 = styled.div`
 const Banner = styled.div`
   position: absolute;
   left: 25%;
-  top: 30%;
+  top: 40%;
   z-index: 1;
 `;
 const Head = styled.p`
@@ -42,15 +41,17 @@ const Desc = styled.p`
 
 const LandingPage = () => {
   return (
-    <Container>
+    <div>
       <Banner>
         <Head> Let's Game It! </Head>
         <Desc>Get every single PC game that you want for a lower price</Desc>
       </Banner>
-      <Container2>
-        <Container3></Container3>
-      </Container2>
-    </Container>
+      <Container>
+        <Container2>
+          <Container3></Container3>
+        </Container2>
+      </Container>
+    </div>
   );
 };
 

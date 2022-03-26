@@ -23,7 +23,7 @@ const SalePrice = styled.p`
 `;
 const InfoWrapper = styled.div`
   width: 300px;
-  background-color: #383838;
+  background-color: #783937ff;
   position: relative;
   left: 15.75%;
   bottom: 6%;

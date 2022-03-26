@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Game from "../components/Game";
 import { GamesContext } from "../contexts/GamesContext";
 import LandingPage from "../components/LandingPage";
+import Menu from "../components/Menu";
 
 const Container = styled.div`
   padding: 20px;
@@ -106,6 +107,7 @@ const Home = () => {
 
   return (
     <div>
+      <Menu />
       <LandingPage />
       <Slider slides={games} />
       <Wrapper>
