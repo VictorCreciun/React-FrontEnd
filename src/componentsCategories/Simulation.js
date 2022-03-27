@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { Data } from "../data";
+import { GamesContext } from "../contexts/GamesContext";
 
 const Container = styled.div`
   padding: 20px;
   background-color: #2b2b2b;
 `;
+
 const PriceWrapper = styled.div`
   width: 170px;
   background-color: #383838;
-  /* position: relative;
-    left: 15.75%;
-    bottom: 5%; */
 `;
+
 const Wrapper = styled.div``;
+
 const WrapperReturn = styled.div`
   display: flex;
   margin: 25px;
@@ -21,19 +21,23 @@ const WrapperReturn = styled.div`
   position: relative;
   left: 30px;
 `;
+
 const Image = styled.img`
   width: 170px;
   height: 220px;
   object-fit: cover;
 `;
+
 const Title = styled.div`
   color: white;
   font-size: 12px;
 `;
+
 const SalePrice = styled.p`
   color: white;
   font-size: 12px;
 `;
+
 const Info = styled.div`
   color: white;
   width: 500px;
@@ -41,37 +45,39 @@ const Info = styled.div`
   padding-top: 5%;
 `;
 
-const Simulation = () => {
+const Action = () => {
+  const { games } = useContext(GamesContext);
+
   return (
     <Container>
-      {Data.map((item, itemIndex) => {
+      {games.map((item, itemIndex) => {
         let content = null;
         let info = null;
 
-        if (item.Category === "Simulation" || item.Category2 === "Simulation") {
-          if (item.Sale < 0) {
+        if (item.category === "Simulation") {
+          if (item.sale < 0) {
             content = (
               <PriceWrapper>
-                <Image src={item.Img} />
+                <Image src={item.image} />
                 <Title>{item.Title}</Title>
                 <SalePrice>
-                  {item.Sale}% ${item.SalePrice}
+                  {item.sale}% ${item.salePrice}
                 </SalePrice>
               </PriceWrapper>
             );
           } else {
             content = (
               <PriceWrapper>
-                <Image src={item.Img} />
-                <Title>{item.Title}</Title>
-                <SalePrice>${item.Price}</SalePrice>
+                <Image src={item.image} />
+                <Title>{item.title}</Title>
+                <SalePrice>${item.price}</SalePrice>
               </PriceWrapper>
             );
           }
         }
 
-        if (item.Category === "Simulation" || item.Category2 === "Simulation") {
-          info = <Info>{item.Desc}</Info>;
+        if (item.category === "Simulation") {
+          info = <Info>{item.description}</Info>;
         }
 
         return (
@@ -87,4 +93,4 @@ const Simulation = () => {
   );
 };
 
-export default Simulation;
+export default Action;

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div``;
-
 const Wrapper = styled.div`
   flex: 1;
   margin: 25px;
@@ -30,25 +29,25 @@ const InfoWrapper = styled.div`
 `;
 
 const Game = ({ item }) => {
-  //   let content = null;
+  let content = null;
 
-  //   if (item.sale < 0) {
-  //     content = (
-  //       <InfoWrapper>
-  //         <Title>{item.title}</Title>
-  //         <Sale_Price>
-  //           {item.sale}% ${item.salePrice}
-  //         </Sale_Price>
-  //       </InfoWrapper>
-  //     );
-  //   } else {
-  //     content = (
-  //       <InfoWrapper>
-  //         <Title>{item.title}</Title>
-  //         <Sale_Price>${item.price}</Sale_Price>
-  //       </InfoWrapper>
-  //     );
-  //   }
+  if (item.sale < 0) {
+    content = (
+      <InfoWrapper>
+        <Title>{item.title}</Title>
+        <SalePrice>
+          {item.sale}% ${item.salePrice}
+        </SalePrice>
+      </InfoWrapper>
+    );
+  } else {
+    content = (
+      <InfoWrapper>
+        <Title>{item.title}</Title>
+        <SalePrice>${item.price}</SalePrice>
+      </InfoWrapper>
+    );
+  }
 
   return (
     <Container>

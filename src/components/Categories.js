@@ -85,7 +85,7 @@ const Categories = () => {
           }}
         >
           <Circle></Circle>
-          <Adress>FPS</Adress>
+          <Adress>First-Person</Adress>
         </Button>
         <Button
           onClick={() => {

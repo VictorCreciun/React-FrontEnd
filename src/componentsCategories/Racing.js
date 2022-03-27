@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { Data } from "../data";
+import { GamesContext } from "../contexts/GamesContext";
 
 const Container = styled.div`
   padding: 20px;
@@ -10,9 +10,6 @@ const Container = styled.div`
 const PriceWrapper = styled.div`
   width: 170px;
   background-color: #383838;
-  /* position: relative;
-    left: 15.75%;
-    bottom: 5%; */
 `;
 
 const Wrapper = styled.div``;
@@ -48,37 +45,39 @@ const Info = styled.div`
   padding-top: 5%;
 `;
 
-const Racing = () => {
+const Action = () => {
+  const { games } = useContext(GamesContext);
+
   return (
     <Container>
-      {Data.map((item, itemIndex) => {
+      {games.map((item, itemIndex) => {
         let content = null;
         let info = null;
 
-        if (item.Category === "Racing" || item.Category2 === "Racing") {
-          if (item.Sale < 0) {
+        if (item.category === "Racing") {
+          if (item.sale < 0) {
             content = (
               <PriceWrapper>
-                <Image src={item.Img} />
+                <Image src={item.image} />
                 <Title>{item.Title}</Title>
                 <SalePrice>
-                  {item.Sale}% ${item.SalePrice}
+                  {item.sale}% ${item.salePrice}
                 </SalePrice>
               </PriceWrapper>
             );
           } else {
             content = (
               <PriceWrapper>
-                <Image src={item.Img} />
-                <Title>{item.Title}</Title>
-                <SalePrice>${item.Price}</SalePrice>
+                <Image src={item.image} />
+                <Title>{item.title}</Title>
+                <SalePrice>${item.price}</SalePrice>
               </PriceWrapper>
             );
           }
         }
 
-        if (item.Category === "Racing" || item.Category2 === "Racing") {
-          info = <Info>{item.Desc}</Info>;
+        if (item.category === "Racing") {
+          info = <Info>{item.description}</Info>;
         }
 
         return (
@@ -94,4 +93,4 @@ const Racing = () => {
   );
 };
 
-export default Racing;
+export default Action;
