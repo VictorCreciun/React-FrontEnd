@@ -6,14 +6,11 @@ const Container = styled.div`
   padding: 20px;
   background-color: #2b2b2b;
 `;
-
 const PriceWrapper = styled.div`
   width: 170px;
   background-color: #383838;
 `;
-
 const Wrapper = styled.div``;
-
 const WrapperReturn = styled.div`
   display: flex;
   margin: 25px;
@@ -21,23 +18,19 @@ const WrapperReturn = styled.div`
   position: relative;
   left: 30px;
 `;
-
 const Image = styled.img`
   width: 170px;
   height: 220px;
   object-fit: cover;
 `;
-
 const Title = styled.div`
   color: white;
   font-size: 12px;
 `;
-
 const SalePrice = styled.p`
   color: white;
   font-size: 12px;
 `;
-
 const Info = styled.div`
   color: white;
   width: 500px;

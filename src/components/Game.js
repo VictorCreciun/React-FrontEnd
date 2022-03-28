@@ -26,7 +26,12 @@ const InfoWrapper = styled.div`
   position: relative;
   left: 15.75%;
   bottom: 6%;
+  margin-top: -30px;
 `;
+const Hover = styled.div`
+  position: absolute;
+`;
+const HoverName = styled.div``;
 
 const Game = ({ item }) => {
   let content = null;
@@ -51,13 +56,19 @@ const Game = ({ item }) => {
 
   return (
     <Container>
-      <Wrapper>
-        <Image src={item.image} />
-      </Wrapper>
-      <InfoWrapper>
-        <Title>{item.title}</Title>
-        <SalePrice>${item.price}</SalePrice>
-      </InfoWrapper>
+      <div>
+        <Wrapper>
+          <Image src={item.image} />
+        </Wrapper>
+
+        <InfoWrapper>
+          <Title>{item.title}</Title>
+          <SalePrice>${item.price}</SalePrice>
+        </InfoWrapper>
+      </div>
+      <Hover>
+        <HoverName>{item.title}</HoverName>
+      </Hover>
     </Container>
   );
 };

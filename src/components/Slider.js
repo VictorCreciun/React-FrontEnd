@@ -25,16 +25,16 @@ const Wrapper = styled.div``;
 const Card = styled.div`
   height: 500px;
   width: 900px;
-  border: 1px solid black;
-  background-color: black;
-  /* opacity: 0.9; */
+  /* border: 1px solid black; */
 `;
 const CardContainer = styled.div`
   position: relative;
   height: 500px;
-  width: 900px;
-  background-color: #1c2e4a;
+  background-color: black;
   opacity: 0.5;
+  width: 900px;
+  /* background-color: #1c2e4a;
+  opacity: 0.8; */
 `;
 
 const Slider = ({ slides }) => {
