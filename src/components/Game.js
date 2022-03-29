@@ -1,21 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
 `;
 const Wrapper = styled.div`
-  margin: 25px;
-  /* min-width: 200px; */
   position: relative;
+  margin: 25px;
   left: 30px;
   cursor: pointer;
-
-  /* &:hover .hover {
-      visibility: visible;
-    }
-  }
-   */
 `;
 const Image = styled.img`
   width: 300px;
@@ -38,12 +31,9 @@ const InfoWrapper = styled.div`
 `;
 const Hover = styled.div`
   position: absolute;
-  /* display: flex;
-  flex-direction: column; */
-  /* justify-content: right; */
-  /* visibility: hidden; */
   background-color: #dbe2e9;
   width: 250px;
+  margin-left: 350px;
 `;
 const HoverName = styled.div`
   margin: 10px 0 0 50px;
@@ -86,6 +76,8 @@ const HoverPrice = styled.div`
 `;
 
 const Game = ({ item }) => {
+  const [hoverDetails, setHoverDetails] = useState(false);
+
   let content = null;
   let hoverContent = null;
 
@@ -121,23 +113,33 @@ const Game = ({ item }) => {
   return (
     <Container>
       <div>
-        <Wrapper className="wrapper">
+        <Wrapper
+          className="wrapper"
+          onMouseOver={() => {
+            setHoverDetails(true);
+          }}
+          onMouseOut={() => {
+            setHoverDetails(false);
+          }}
+        >
           <Image src={item.image} />
           {content}
         </Wrapper>
       </div>
 
-      <Hover className="hover">
-        <HoverName>{item.title}</HoverName>
+      {hoverDetails && (
+        <Hover className="hover">
+          <HoverName>{item.title}</HoverName>
 
-        <HoverWrapper>
-          <HoverImg src={item.image} />
-        </HoverWrapper>
+          <HoverWrapper>
+            <HoverImg src={item.image} />
+          </HoverWrapper>
 
-        <HoverCateg>Category: {item.category}</HoverCateg>
+          <HoverCateg>Category: {item.category}</HoverCateg>
 
-        {hoverContent}
-      </Hover>
+          {hoverContent}
+        </Hover>
+      )}
     </Container>
   );
 };

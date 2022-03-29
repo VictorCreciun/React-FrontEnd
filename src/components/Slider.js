@@ -40,6 +40,7 @@ const CardContainer = styled.div`
 const Slider = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
+
   const { games } = useContext(GamesContext);
 
   const nextSlide = () => {
@@ -50,14 +51,11 @@ const Slider = ({ slides }) => {
     setCurrent(current === length - 1 ? 0 : current - 1);
   };
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
-    return null;
-  }
-
   return (
     <Container>
       <FaArrowAltCircleLeft
         style={{
+          visibility: current === 0 ? "hidden" : "visible",
           position: "absolute",
           top: "70%",
           left: "20%",
@@ -84,10 +82,7 @@ const Slider = ({ slides }) => {
       />
       {games.map((slide, index) => {
         return (
-          <Wrapper
-            // className={index === current ? Slide && Active : Slide}
-            key={index}
-          >
+          <Wrapper key={index}>
             {index === current && (
               <Card>
                 <Img src={slide.image} />
