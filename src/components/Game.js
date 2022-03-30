@@ -33,7 +33,10 @@ const Hover = styled.div`
   position: absolute;
   background-color: #dbe2e9;
   width: 250px;
-  margin-left: 350px;
+  margin-left: 355px;
+  margin-top: 25px;
+  z-index: 1;
+  transition: 1s ease;
 `;
 const HoverName = styled.div`
   margin: 10px 0 0 50px;
@@ -73,6 +76,7 @@ const HoverSale = styled.div`
 const HoverPrice = styled.div`
   display: flex;
   justify-content: right;
+  margin-top: 3px;
 `;
 
 const Game = ({ item }) => {
@@ -123,12 +127,12 @@ const Game = ({ item }) => {
           }}
         >
           <Image src={item.image} />
-          {content}
+          {/* {content} */}
         </Wrapper>
       </div>
 
       {hoverDetails && (
-        <Hover className="hover">
+        <Hover>
           <HoverName>{item.title}</HoverName>
 
           <HoverWrapper>

@@ -15,6 +15,7 @@ import GamesProvider from "./contexts/GamesContext";
 import Wishlist from "./pages/Wishlist";
 import PrivateRoute from "./components/PrivateRoute";
 import { useState, useEffect } from "react";
+import Admin from "./pages/Admin";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -57,6 +58,7 @@ const App = () => {
 
         <Switch>
           <Route exact path="/" component={Home}></Route>
+          <Route exact path="/admin" component={Admin}></Route>
           <Route exact path="/action" component={Action}></Route>
           <Route exact path="/first-person" component={FirstPerson}></Route>
           <Route exact path="/horror" component={Horror}></Route>
@@ -65,12 +67,7 @@ const App = () => {
           <Route exact path="/simulation" component={Simulation}></Route>
           <Route exact path="/sport" component={Sport}></Route>
           <Route exact path="/survival" component={Survival}></Route>
-          <Route
-            exact
-            path="/login"
-            component={User}
-            // setIsAuthenticated={setIsAuthenticated}
-          ></Route>
+          <Route exact path="/login" component={User}></Route>
           <Route exact path="/register" component={Register}></Route>
           <PrivateRoute
             exact
