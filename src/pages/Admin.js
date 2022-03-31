@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -45,43 +45,117 @@ const Save = styled.button`
 `;
 
 const Admin = () => {
+  const [imageCompiler, setImageCompiler] = useState("");
+  const [formData, setFormData] = useState({
+    title: "",
+    contentImage: "",
+    images: [],
+    description: "",
+    price: 0,
+    sale: 0,
+    salePrice: 0,
+    category: "",
+  });
+
+  const handleInputChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const addImages = () => {
+    setFormData({
+      ...formData,
+      images: [...formData.images, imageCompiler],
+    });
+    setImageCompiler("");
+  };
+
+  console.log("formData.images", formData.images);
+
   return (
     <div>
       <Container>
         <Wrapper>
           <WrapperElement>
             <Label>Title:</Label>
-            <Input type="text" />
+            <Input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleInputChange}
+            />
           </WrapperElement>
 
           <WrapperElement>
-            <Label>Image Source:</Label>
-            <Input type="text" />
+            <Label>Content Image:</Label>
+            <Input
+              type="text"
+              name="contentImage"
+              value={formData.contentImage}
+              onChange={handleInputChange}
+            />
+          </WrapperElement>
+
+          <WrapperElement>
+            <Label>Image:</Label>
+            <Input
+              type="text"
+              name="imageCompiler"
+              value={imageCompiler}
+              onChange={(event) => setImageCompiler(event.target.value)}
+            />
+            <button onClick={addImages}>Compile</button>
           </WrapperElement>
 
           <WrapperElement>
             <Label>Description:</Label>
-            <Input type="text" />
+            <Input
+              type="text"
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
+            />
           </WrapperElement>
 
           <WrapperElement>
             <Label>Price:</Label>
-            <Input type="number" />
+            <Input
+              type="number"
+              name="price"
+              value={formData.price}
+              onChange={handleInputChange}
+              required
+            />
           </WrapperElement>
 
           <WrapperElement>
             <Label>Sale:</Label>
-            <Input type="number" />
+            <Input
+              type="number"
+              name="sale"
+              value={formData.sale}
+              onChange={handleInputChange}
+            />
           </WrapperElement>
 
           <WrapperElement>
             <Label>Sale Price:</Label>
-            <Input type="number" />
+            <Input
+              type="number"
+              name="salePrice"
+              value={formData.salePrice}
+              onChange={handleInputChange}
+              required
+            />
           </WrapperElement>
 
           <WrapperElement>
             <Label>Category:</Label>
-            <Input type="text" />
+            <Input
+              type="text"
+              name="category"
+              value={formData.category}
+              onChange={handleInputChange}
+            />
           </WrapperElement>
         </Wrapper>
 

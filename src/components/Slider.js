@@ -33,8 +33,24 @@ const CardContainer = styled.div`
   background-color: black;
   opacity: 0.5;
   width: 900px;
-  /* background-color: #1c2e4a;
-  opacity: 0.8; */
+`;
+const ImageDiv = styled.div`
+  height: 125px;
+  width: auto;
+  padding: 10px;
+`;
+const ImagesContainer = styled.div`
+  max-width: 600px;
+  position: absolute;
+  left: 45%;
+  margin-top: 100px;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+`;
+const Images = styled.img`
+  height: 125px;
+  width: auto;
 `;
 
 const Slider = ({ slides }) => {
@@ -85,7 +101,17 @@ const Slider = ({ slides }) => {
           <Wrapper key={index}>
             {index === current && (
               <Card>
-                <Img src={slide.image} />
+                <Img src={slide.contentImage} />
+
+                {slide.images && (
+                  <ImagesContainer>
+                    {slide.images.map((image) => (
+                      <ImageDiv>
+                        <Images src={image} />
+                      </ImageDiv>
+                    ))}
+                  </ImagesContainer>
+                )}
                 <CardContainer></CardContainer>
               </Card>
             )}

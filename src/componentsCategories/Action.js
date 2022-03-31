@@ -50,7 +50,7 @@ const Action = () => {
         if (item.category === "Action") {
           if (item.sale < 0) {
             content = (
-              <PriceWrapper>
+              <PriceWrapper key={item._id}>
                 <Image src={item.image} />
                 <Title>{item.Title}</Title>
                 <SalePrice>
@@ -60,7 +60,7 @@ const Action = () => {
             );
           } else {
             content = (
-              <PriceWrapper>
+              <PriceWrapper key={item._id}>
                 <Image src={item.image} />
                 <Title>{item.title}</Title>
                 <SalePrice>${item.price}</SalePrice>

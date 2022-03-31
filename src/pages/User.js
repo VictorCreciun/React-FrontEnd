@@ -1,10 +1,10 @@
 import React from "react";
 import UserComp from "../components/UserComp";
 
-const User = () => {
+const User = ({ setIsAuthenticated }) => {
   return (
     <div>
-      <UserComp />
+      <UserComp setIsAuthenticated={setIsAuthenticated} />
     </div>
   );
 };

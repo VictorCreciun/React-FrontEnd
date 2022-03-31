@@ -126,7 +126,7 @@ const Game = ({ item }) => {
             setHoverDetails(false);
           }}
         >
-          <Image src={item.image} />
+          <Image src={item.contentImage} />
           {/* {content} */}
         </Wrapper>
       </div>
@@ -134,10 +134,11 @@ const Game = ({ item }) => {
       {hoverDetails && (
         <Hover>
           <HoverName>{item.title}</HoverName>
-
-          <HoverWrapper>
-            <HoverImg src={item.image} />
-          </HoverWrapper>
+          {item.images.map((image) => (
+            <HoverWrapper>
+              <HoverImg src={image} />
+            </HoverWrapper>
+          ))}
 
           <HoverCateg>Category: {item.category}</HoverCateg>
 

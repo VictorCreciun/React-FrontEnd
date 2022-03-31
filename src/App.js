@@ -67,7 +67,13 @@ const App = () => {
           <Route exact path="/simulation" component={Simulation}></Route>
           <Route exact path="/sport" component={Sport}></Route>
           <Route exact path="/survival" component={Survival}></Route>
-          <Route exact path="/login" component={User}></Route>
+          <Route
+            exact
+            path="/login"
+            render={(props) => (
+              <User {...props} setIsAuthenticated={setIsAuthenticated} />
+            )}
+          ></Route>
           <Route exact path="/register" component={Register}></Route>
           <PrivateRoute
             exact

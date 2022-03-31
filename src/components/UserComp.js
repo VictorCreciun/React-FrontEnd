@@ -59,7 +59,7 @@ const NewAcc = styled.a`
   text-decoration: none;
 `;
 
-const UserComp = () => {
+const UserComp = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -92,11 +92,14 @@ const UserComp = () => {
       })
       .then((data) => {
         console.log("data: ", data);
-        localStorage.setItem("token", data.token);
-        // setIsAuthenticated(true);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ token: data.token, role: data.role })
+        );
+        setIsAuthenticated(true);
+        setFormData({ email: "", password: "" });
+        history.push("/");
       });
-    setFormData({ email: "", password: "" });
-    history.push("/");
   };
 
   return (
