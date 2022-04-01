@@ -36,7 +36,7 @@ const CardContainer = styled.div`
 `;
 const ImageDiv = styled.div`
   height: 125px;
-  width: auto;
+  width: 220px;
   padding: 10px;
 `;
 const ImagesContainer = styled.div`
@@ -50,7 +50,31 @@ const ImagesContainer = styled.div`
 `;
 const Images = styled.img`
   height: 125px;
-  width: auto;
+  width: 220px;
+  object-fit: cover;
+`;
+const Details = styled.div`
+  position: absolute;
+  display: flex;
+  margin-left: 550px;
+  margin-top: 425px;
+  z-index: 1;
+`;
+const Sale = styled.div`
+  color: #86dc3d;
+  background-color: #495e35;
+  display: flex;
+  justify-content: right;
+  margin-right: 20px;
+  font-size: 25px;
+  padding: 3px;
+`;
+const Price = styled.div`
+  display: flex;
+  justify-content: right;
+  margin-top: 3px;
+  font-size: 25px;
+  color: white;
 `;
 
 const Slider = ({ slides }) => {
@@ -66,6 +90,8 @@ const Slider = ({ slides }) => {
   const prevSlide = () => {
     setCurrent(current === length - 1 ? 0 : current - 1);
   };
+
+  let content = null;
 
   return (
     <Container>
@@ -97,6 +123,20 @@ const Slider = ({ slides }) => {
         onClick={nextSlide}
       />
       {games.map((slide, index) => {
+        if (slide.sale < 0) {
+          content = (
+            <Details>
+              <Sale>{slide.sale}%</Sale>
+              <Price>${slide.salePrice}</Price>
+            </Details>
+          );
+        } else {
+          content = (
+            <Details>
+              <Price>${slide.salePrice}</Price>
+            </Details>
+          );
+        }
         return (
           <Wrapper key={index}>
             {index === current && (
@@ -112,6 +152,7 @@ const Slider = ({ slides }) => {
                     ))}
                   </ImagesContainer>
                 )}
+                {content}
                 <CardContainer></CardContainer>
               </Card>
             )}

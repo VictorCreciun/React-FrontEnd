@@ -1,32 +1,32 @@
 import React, { useState, useContext } from "react";
 import { Search } from "@material-ui/icons";
 import styled from "styled-components";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { IconContext } from "react-icons";
-import { GamesContext } from "../contexts/GamesContext";
+// import * as FaIcons from "react-icons/fa";
+// import * as AiIcons from "react-icons/ai";
+// import { IconContext } from "react-icons";
+// import { GamesContext } from "../contexts/GamesContext";
 import "./Menu.css";
 
 const Section = styled.section`
   position: absolute;
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   margin-top: 100px;
   width: 100%;
   z-index: 1;
 `;
-const MenuComp = styled.div``;
-const A = styled.a`
-  text-decoration: none;
-  color: #f5f5f5;
-  font-size: 25px;
-  width: 95%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  border-radius: 4px;
-`;
+// const MenuComp = styled.div``;
+// const A = styled.a`
+//   text-decoration: none;
+//   color: #f5f5f5;
+//   font-size: 25px;
+//   width: 95%;
+//   height: 100%;
+//   display: flex;
+//   align-items: center;
+//   padding: 0 16px;
+//   border-radius: 4px;
+// `;
 const SearchZone = styled.div`
   position: relative;
   margin-right: 75px;
@@ -44,13 +44,13 @@ const Input = styled.input`
   margin-right: 5px;
 `;
 const Menu = () => {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
-  const { games } = useContext(GamesContext);
+  // const [sidebar, setSidebar] = useState(false);
+  // const showSidebar = () => setSidebar(!sidebar);
+  // const { games } = useContext(GamesContext);
 
   return (
     <Section>
-      <MenuComp>
+      {/* <MenuComp>
         <IconContext.Provider value={{ color: "#fff" }}>
           <div className="navbar">
             <A className="menu-bars">
@@ -94,7 +94,7 @@ const Menu = () => {
             </ul>
           </nav>
         </IconContext.Provider>
-      </MenuComp>
+      </MenuComp> */}
       <SearchZone>
         <SearchContainer>
           <Input />

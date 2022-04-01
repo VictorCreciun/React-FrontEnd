@@ -1,0 +1,60 @@
+/* @-webkit-keyframes slideAnimation {
+}
+
+.globalHover {
+  width: 300px;
+  height: 250px;
+  position: relative;
+  margin-left: 20px;
+  overflow: hidden;
+  display: flex; 
+  -webkit-animation-name: slideAnimation;
+  -webkit-animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-play-state: running;
+} */
+
+/* .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+ The dots/bullets/indicators 
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+ Fading animation 
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+} */
+
+/*   
+   On smaller screens, decrease text size 
+  @media only screen and (max-width: 300px) {
+    .text {font-size: 11px}
+  } */

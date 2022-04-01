@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
   position: absolute;
@@ -45,6 +46,7 @@ const Save = styled.button`
 `;
 
 const Admin = () => {
+  const history = useHistory();
   const [imageCompiler, setImageCompiler] = useState("");
   const [formData, setFormData] = useState({
     title: "",
@@ -71,103 +73,146 @@ const Admin = () => {
 
   console.log("formData.images", formData.images);
 
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    fetch("https://game-shop-4real.herokuapp.com/api/games", {
+      method: "POST",
+      body: JSON.stringify({
+        title: formData.title,
+        contentImage: formData.contentImage,
+        images: formData.images,
+        description: formData.description,
+        price: formData.price,
+        sale: formData.sale,
+        salePrice: formData.salePrice,
+        category: formData.category,
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          return res.json();
+        }
+        console.log("res", res);
+      })
+      .then((data) => {
+        console.log("data: ", data);
+        return history.push("/admin");
+      });
+    setFormData({
+      title: "",
+      contentImage: "",
+      images: [""],
+      description: "",
+      price: 0,
+      sale: 0,
+      salePrice: 0,
+      category: "",
+    });
+  };
+
   return (
     <div>
       <Container>
-        <Wrapper>
-          <WrapperElement>
-            <Label>Title:</Label>
-            <Input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleInputChange}
-            />
-          </WrapperElement>
+        <form onSubmit={onFormSubmit}>
+          <Wrapper>
+            <WrapperElement>
+              <Label>Title:</Label>
+              <Input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleInputChange}
+              />
+            </WrapperElement>
 
-          <WrapperElement>
-            <Label>Content Image:</Label>
-            <Input
-              type="text"
-              name="contentImage"
-              value={formData.contentImage}
-              onChange={handleInputChange}
-            />
-          </WrapperElement>
+            <WrapperElement>
+              <Label>Content Image:</Label>
+              <Input
+                type="text"
+                name="contentImage"
+                value={formData.contentImage}
+                onChange={handleInputChange}
+              />
+            </WrapperElement>
 
-          <WrapperElement>
-            <Label>Image:</Label>
-            <Input
-              type="text"
-              name="imageCompiler"
-              value={imageCompiler}
-              onChange={(event) => setImageCompiler(event.target.value)}
-            />
-            <button onClick={addImages}>Compile</button>
-          </WrapperElement>
+            <WrapperElement>
+              <Label>Image:</Label>
+              <Input
+                type="text"
+                name="imageCompiler"
+                value={imageCompiler}
+                onChange={(event) => setImageCompiler(event.target.value)}
+              />
+              <button onClick={addImages}>Compile</button>
+            </WrapperElement>
 
-          <WrapperElement>
-            <Label>Description:</Label>
-            <Input
-              type="text"
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-            />
-          </WrapperElement>
+            <WrapperElement>
+              <Label>Description:</Label>
+              <Input
+                type="text"
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+              />
+            </WrapperElement>
 
-          <WrapperElement>
-            <Label>Price:</Label>
-            <Input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              required
-            />
-          </WrapperElement>
+            <WrapperElement>
+              <Label>Price:</Label>
+              <Input
+                type="number"
+                name="price"
+                value={formData.price}
+                onChange={handleInputChange}
+                required
+              />
+            </WrapperElement>
 
-          <WrapperElement>
-            <Label>Sale:</Label>
-            <Input
-              type="number"
-              name="sale"
-              value={formData.sale}
-              onChange={handleInputChange}
-            />
-          </WrapperElement>
+            <WrapperElement>
+              <Label>Sale:</Label>
+              <Input
+                type="number"
+                name="sale"
+                value={formData.sale}
+                onChange={handleInputChange}
+              />
+            </WrapperElement>
 
-          <WrapperElement>
-            <Label>Sale Price:</Label>
-            <Input
-              type="number"
-              name="salePrice"
-              value={formData.salePrice}
-              onChange={handleInputChange}
-              required
-            />
-          </WrapperElement>
+            <WrapperElement>
+              <Label>Sale Price:</Label>
+              <Input
+                type="number"
+                name="salePrice"
+                value={formData.salePrice}
+                onChange={handleInputChange}
+                required
+              />
+            </WrapperElement>
 
-          <WrapperElement>
-            <Label>Category:</Label>
-            <Input
-              type="text"
-              name="category"
-              value={formData.category}
-              onChange={handleInputChange}
-            />
-          </WrapperElement>
-        </Wrapper>
+            <WrapperElement>
+              <Label>Category:</Label>
+              <Input
+                type="text"
+                name="category"
+                value={formData.category}
+                onChange={handleInputChange}
+              />
+            </WrapperElement>
+          </Wrapper>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "right",
-            marginRight: "500px",
-          }}
-        >
-          <Save>Save</Save>
-        </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "right",
+              marginRight: "500px",
+            }}
+          >
+            <Save type="submit">Save</Save>
+          </div>
+        </form>
       </Container>
     </div>
   );
