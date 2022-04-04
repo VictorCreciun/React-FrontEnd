@@ -16,9 +16,14 @@ import Wishlist from "./pages/Wishlist";
 import PrivateRoute from "./components/PrivateRoute";
 import { useState, useEffect } from "react";
 import Admin from "./pages/Admin";
+import AdminAdd from "./pages/AdminAdd";
+import AdminEdit from "./pages/AdminEdit";
+
+// const user = JSON.parse(localStorage.getItem("user"));
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+  // const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -32,9 +37,11 @@ const App = () => {
         switch (res.status) {
           case 200:
             setIsAuthenticated(true);
+            // user.role === "admin" ? setIsAdmin(true) : setIsAdmin(false);
             break;
           default:
             setIsAuthenticated(false);
+            // setIsAdmin(false);
             break;
         }
       })
@@ -42,11 +49,14 @@ const App = () => {
   }, []);
 
   const handleLogOutClick = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setIsAuthenticated(false);
+    // setIsAdmin(false);
   };
 
   console.log("isAuthenticated: ", isAuthenticated);
+  // console.log("isAdmin: ", isAdmin);
+  // console.log("User Role: ", user.role);
 
   return (
     <div>
@@ -54,11 +64,28 @@ const App = () => {
         <Navbar
           handleLogOutClick={handleLogOutClick}
           isAuthenticated={isAuthenticated}
+          // isAdmin={isAdmin}
         />
 
         <Switch>
           <Route exact path="/" component={Home}></Route>
-          <Route exact path="/admin" component={Admin}></Route>
+          <Route
+            exact
+            path="/admin"
+            render={(props) => (
+              <Admin
+                {...props}
+                // isAdmin={isAdmin}
+                // isAuthenticated={isAuthenticated}
+              />
+            )}
+          ></Route>
+          <Route exact path="/admin/add" component={AdminAdd}></Route>
+          <Route
+            exact
+            path="/admin/edit/:game_id"
+            component={AdminEdit}
+          ></Route>
           <Route exact path="/action" component={Action}></Route>
           <Route exact path="/first-person" component={FirstPerson}></Route>
           <Route exact path="/horror" component={Horror}></Route>
