@@ -1,23 +1,41 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { GamesContext } from "../contexts/GamesContext";
+import bgImage from "../images/img5.jpg";
 
 const Container = styled.div`
-  padding: 20px;
-  background-color: #2b2b2b;
+  position: fixed;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(${bgImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 1;
+`;
+const Container2 = styled.div`
+  background-color: rgba(255, 0, 100, 1);
+  opacity: 0.5;
+  min-height: 100vh;
+`;
+const Container3 = styled.div`
+  background-color: black;
+  opacity: 0.85;
+  min-height: 100vh;
 `;
 const PriceWrapper = styled.div`
   width: 170px;
   background-color: #383838;
 `;
-const Wrapper = styled.div``;
-const WrapperReturn = styled.div`
-  display: flex;
-  margin: 25px;
-  min-width: 170px;
+const Wrapper = styled.div`
   position: relative;
-  left: 30px;
+  padding-top: 10px;
+  margin-left: 40px;
+  z-index: 1;
+  display: flex;
+  min-width: 170px;
 `;
+// const WrapperReturn = styled.div``;
 const Image = styled.img`
   width: 170px;
   height: 220px;
@@ -42,7 +60,12 @@ const Action = () => {
   const { games } = useContext(GamesContext);
 
   return (
-    <Container>
+    <div>
+      <Container>
+        <Container2>
+          <Container3></Container3>
+        </Container2>
+      </Container>
       {games.map((item, itemIndex) => {
         let content = null;
         let info = null;
@@ -50,9 +73,9 @@ const Action = () => {
         if (item.category === "Simulation") {
           if (item.sale < 0) {
             content = (
-              <PriceWrapper>
-                <Image src={item.image} />
-                <Title>{item.Title}</Title>
+              <PriceWrapper key={item._id}>
+                <Image src={item.contentImage} />
+                <Title>{item.title}</Title>
                 <SalePrice>
                   {item.sale}% ${item.salePrice}
                 </SalePrice>
@@ -60,8 +83,8 @@ const Action = () => {
             );
           } else {
             content = (
-              <PriceWrapper>
-                <Image src={item.image} />
+              <PriceWrapper key={item._id}>
+                <Image src={item.contentImage} />
                 <Title>{item.title}</Title>
                 <SalePrice>${item.price}</SalePrice>
               </PriceWrapper>
@@ -75,14 +98,14 @@ const Action = () => {
 
         return (
           <Wrapper>
-            <WrapperReturn>
-              {content}
-              {info}
-            </WrapperReturn>
+            {/* <WrapperReturn> */}
+            {content}
+            {info}
+            {/* </WrapperReturn> */}
           </Wrapper>
         );
       })}
-    </Container>
+    </div>
   );
 };
 

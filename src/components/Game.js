@@ -33,7 +33,7 @@ const InfoWrapper = styled.div`
 const Hover = styled.div`
   position: absolute;
   background-color: #dbe2e9;
-  width: 250px;
+  width: 300px;
   margin-left: 355px;
   margin-top: 25px;
   z-index: 1;
@@ -49,12 +49,13 @@ const HoverWrapper = styled.div`
   position: relative;
   max-width: 300px;
   margin-top: 20px;
-  margin-left: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   justify-content: center;
 `;
 const HoverImg = styled.img`
-  width: 175px;
+  width: 250px;
   height: 225px;
   object-fit: cover;
 `;
@@ -117,28 +118,6 @@ const Game = ({ item }) => {
     );
   }
 
-  // let slideIndex = 0;
-  // showSlides();
-
-  // function showSlides() {
-  //   let i;
-  //   let slides = document.getElementsByClassName("hoverWrapper");
-  //   let dots = document.getElementsByClassName("dot");
-  //   for (i = 0; i < slides.length; i++) {
-  //     slides[i].style.display = "none";
-  //   }
-  //   slideIndex++;
-  //   if (slideIndex > slides.length) {
-  //     slideIndex = 1;
-  //   }
-  //   for (i = 0; i < dots.length; i++) {
-  //     dots[i].className = dots[i].className.replace(" active", "");
-  //   }
-  //   slides[slideIndex - 1].style.display = "block";
-  //   dots[slideIndex - 1].className += " active";
-  //   setTimeout(showSlides, 2000); // Change image every 2 seconds
-  // }
-
   return (
     <Container>
       <div>
@@ -152,7 +131,6 @@ const Game = ({ item }) => {
           }}
         >
           <Image src={item.contentImage} />
-          {/* {content} */}
         </Wrapper>
       </div>
 
@@ -170,11 +148,6 @@ const Game = ({ item }) => {
             ))}
           </div>
 
-          {/* <div style={{ textAlign: "center" }}>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div> */}
           <HoverCateg>Category: {item.category}</HoverCateg>
 
           {hoverContent}

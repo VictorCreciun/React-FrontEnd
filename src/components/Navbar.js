@@ -4,14 +4,13 @@ import { useHistory } from "react-router-dom";
 import MyImg from "../img/4Real.png";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PersonIcon from "@mui/icons-material/Person";
-// import Wishlist from "../pages/Wishlist";
 
 const Container = styled.div`
   position: absolute;
   height: 75px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  opacity: 1;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0.8;
   z-index: 1;
 `;
 const Wrapper = styled.div`

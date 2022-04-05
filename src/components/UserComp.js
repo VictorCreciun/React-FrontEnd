@@ -3,13 +3,13 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
-  background-color: #2b2b2b;
+  position: relative;
+  z-index: 1;
 `;
 const Wrapper = styled.div`
-  background-color: #2b2b2b;
   align-items: center;
   padding: 50px;
-  padding-top: 140px;
+  padding-top: 250px;
   padding-bottom: 140px;
 `;
 const SignInWrapper = styled.div`
