@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import GamesProvider from "./contexts/GamesContext";
 import UsersProvider from "./contexts/UsersContext";
+import WishlistsProvider from "./contexts/WishlistsContext";
 import Wishlist from "./pages/Wishlist";
 import PrivateRoute, { AdminRoute } from "./components/PrivateRoute";
 import { useState, useEffect } from "react";
@@ -111,12 +112,14 @@ const App = () => {
               )}
             ></Route>
             <Route exact path="/register" component={Register}></Route>
-            <PrivateRoute
-              exact
-              path="/wishlist"
-              isAuthenticated={isAuthenticated}
-              render={(props) => <Wishlist {...props} />} //render = redirect ( component={...} )
-            ></PrivateRoute>
+            <WishlistsProvider>
+              <PrivateRoute
+                exact
+                path="/wishlist"
+                isAuthenticated={isAuthenticated}
+                render={(props) => <Wishlist {...props} />} //render = redirect ( component={...} )
+              ></PrivateRoute>
+            </WishlistsProvider>
           </Switch>
         </UsersProvider>
       </GamesProvider>

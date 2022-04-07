@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Search } from "@material-ui/icons";
 import styled from "styled-components";
 import { GamesContext } from "../contexts/GamesContext";
 

@@ -6,7 +6,7 @@ export const WishlistsContext = createContext();
 const WishlistsProvider = ({ children }) => {
   const [wishlists, setWishlists] = useState([]);
 
-  console.log(users);
+  console.log(wishlists);
 
   useEffect(() => {
     axios("https://game-shop-4real.herokuapp.com/api/wishlist").then(
