@@ -138,15 +138,15 @@ const Slider = ({ slides }) => {
           );
         }
         return (
-          <Wrapper key={index}>
+          <Wrapper key={slide._id}>
             {index === current && (
               <Card>
                 <Img src={slide.contentImage} />
 
                 {slide.images && (
                   <ImagesContainer>
-                    {slide.images.map((image) => (
-                      <ImageDiv>
+                    {slide.images.map((image, index) => (
+                      <ImageDiv key={index}>
                         <Images src={image} />
                       </ImageDiv>
                     ))}

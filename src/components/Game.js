@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import "./Game.css";
 
 const Container = styled.div`
@@ -16,20 +16,20 @@ const Image = styled.img`
   height: 400px;
   object-fit: cover;
 `;
-const Title = styled.div`
-  color: white;
-`;
-const SalePrice = styled.p`
-  color: white;
-`;
-const InfoWrapper = styled.div`
-  width: 300px;
-  background-color: #783937ff;
-  position: relative;
-  /* left: 15.75%; */
-  bottom: 6%;
-  margin-top: -30px;
-`;
+// const Title = styled.div`
+//   color: white;
+// `;
+// const SalePrice = styled.p`
+//   color: white;
+// `;
+// const InfoWrapper = styled.div`
+//   width: 300px;
+//   background-color: #783937ff;
+//   position: relative;
+//   /* left: 15.75%; */
+//   bottom: 6%;
+//   margin-top: -30px;
+// `;
 const Hover = styled.div`
   position: absolute;
   background-color: #dbe2e9;
@@ -86,18 +86,18 @@ const HoverPrice = styled.div`
 const Game = ({ item }) => {
   const [hoverDetails, setHoverDetails] = useState(false);
 
-  let content = null;
+  // let content = null;
   let hoverContent = null;
 
   if (item.sale < 0) {
-    content = (
-      <InfoWrapper>
-        <Title>{item.title}</Title>
-        <SalePrice>
-          {item.sale}% ${item.salePrice}
-        </SalePrice>
-      </InfoWrapper>
-    );
+    // content = (
+    //   <InfoWrapper>
+    //     <Title>{item.title}</Title>
+    //     <SalePrice>
+    //       {item.sale}% ${item.salePrice}
+    //     </SalePrice>
+    //   </InfoWrapper>
+    // );
     hoverContent = (
       <HoverDetails>
         <HoverSale>{item.sale}%</HoverSale>
@@ -105,12 +105,12 @@ const Game = ({ item }) => {
       </HoverDetails>
     );
   } else {
-    content = (
-      <InfoWrapper>
-        <Title>{item.title}</Title>
-        <SalePrice>${item.price}</SalePrice>
-      </InfoWrapper>
-    );
+    // content = (
+    //   <InfoWrapper>
+    //     <Title>{item.title}</Title>
+    //     <SalePrice>${item.price}</SalePrice>
+    //   </InfoWrapper>
+    // );
     hoverContent = (
       <HoverDetails>
         <HoverPrice>${item.salePrice}</HoverPrice>

@@ -69,9 +69,10 @@ const AdminEdit = () => {
     axios(
       `https://game-shop-4real.herokuapp.com/api/games/${params.game_id}`
     ).then((response) => setFoundGame(response.data));
-  }, []);
+  }, [params]);
 
   console.log("foundGame: ", foundGame);
+  console.log("formData: ", formData);
 
   const onFormSubmit = () => {
     fetch(`https://game-shop-4real.herokuapp.com/api/games/${params.game_id}`, {
@@ -107,13 +108,13 @@ const AdminEdit = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const addImages = () => {
-    setFormData({
-      ...formData,
-      images: [...formData.images, imageCompiler],
-    });
-    setImageCompiler("");
-  };
+  // const addImages = () => {
+  //   setFormData({
+  //     ...formData,
+  //     images: [...formData.images, imageCompiler],
+  //   });
+  //   setImageCompiler("");
+  // };
 
   console.log("formData.images", formData.images);
 
@@ -127,7 +128,7 @@ const AdminEdit = () => {
               <Input
                 type="text"
                 name="title"
-                value={foundGame.title}
+                value={formData.title}
                 onChange={handleInputChange}
               />
             </WrapperElement>
@@ -137,7 +138,7 @@ const AdminEdit = () => {
               <Input
                 type="text"
                 name="contentImage"
-                value={foundGame.contentImage}
+                value={formData.contentImage}
                 onChange={handleInputChange}
               />
             </WrapperElement>
@@ -150,9 +151,7 @@ const AdminEdit = () => {
                 value={imageCompiler}
                 onChange={(event) => setImageCompiler(event.target.value)}
               />
-              <button type="button" onClick={addImages}>
-                Compile
-              </button>
+              <button type="button">Compile</button>
             </WrapperElement>
 
             <WrapperElement>
@@ -160,7 +159,7 @@ const AdminEdit = () => {
               <Input
                 type="text"
                 name="description"
-                value={foundGame.description}
+                value={formData.description}
                 onChange={handleInputChange}
               />
             </WrapperElement>
@@ -170,7 +169,7 @@ const AdminEdit = () => {
               <Input
                 type="number"
                 name="price"
-                value={foundGame.price}
+                value={formData.price}
                 onChange={handleInputChange}
                 required
               />
@@ -181,7 +180,7 @@ const AdminEdit = () => {
               <Input
                 type="number"
                 name="sale"
-                value={foundGame.sale}
+                value={formData.sale}
                 onChange={handleInputChange}
               />
             </WrapperElement>
@@ -191,7 +190,7 @@ const AdminEdit = () => {
               <Input
                 type="number"
                 name="salePrice"
-                value={foundGame.salePrice}
+                value={formData.salePrice}
                 onChange={handleInputChange}
                 required
               />
@@ -202,7 +201,7 @@ const AdminEdit = () => {
               <Input
                 type="text"
                 name="category"
-                value={foundGame.category}
+                value={formData.category}
                 onChange={handleInputChange}
               />
             </WrapperElement>

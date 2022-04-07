@@ -92,10 +92,7 @@ const UserComp = ({ setIsAuthenticated }) => {
       })
       .then((data) => {
         console.log("data: ", data);
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ token: data.token, role: data.role })
-        );
+        localStorage.setItem("user", JSON.stringify(data));
         setIsAuthenticated(true);
         setFormData({ email: "", password: "" });
         history.push("/");

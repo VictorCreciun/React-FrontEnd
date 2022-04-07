@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import MyImg from "../img/4Real.png";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PersonIcon from "@mui/icons-material/Person";
@@ -14,21 +14,21 @@ const Container = styled.div`
   z-index: 1;
 `;
 const Wrapper = styled.div`
-  // padding: 22px;
-  /* color: white; */
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
 `;
 const Left = styled.div`
+  position: relative;
   padding: 12px;
   display: flex;
+  z-index: 1;
 `;
 const Img = styled.img`
   height: 40px;
   cursor: pointer;
-  margin-left: 10pxx;
+  margin-left: 10px;
 `;
 const Center = styled.div`
   padding: 22px;
@@ -79,11 +79,9 @@ const Navbar = ({ handleLogOutClick, isAuthenticated }) => {
     <Container>
       <Wrapper>
         <Left>
-          <Img
-            onClick={() => {
-              history.push("/");
-            }}
-          />
+          <Link to="/">
+            <Img />
+          </Link>
         </Left>
         <Center></Center>
         <Right>
