@@ -105,16 +105,6 @@ const Sale = styled.div`
   padding: 3px;
   padding-bottom: 7px;
 `;
-const Cart = styled.button`
-  width: 100px;
-  font-size: 15px;
-  padding: 4px;
-  color: white;
-  background-color: #0066cc;
-  border: none;
-  margin-top: 20px;
-  cursor: pointer;
-`;
 const Entrance = styled.div``;
 const H2 = styled.h2`
   color: white;
@@ -156,7 +146,6 @@ const Shooter = () => {
                         <Price>${item.salePrice}</Price>
                       </PriceWrapper>
                     </Details>
-                    <Cart>Add to Cart</Cart>
                   </InfoWrapper>
                 </GameWrapper>
               );
@@ -175,7 +164,6 @@ const Shooter = () => {
                         <Price>${item.price}</Price>
                       </PriceWrapper>
                     </Details>
-                    <Cart>Add to Cart</Cart>
                   </InfoWrapper>
                 </GameWrapper>
               );
