@@ -23,90 +23,172 @@ const Container3 = styled.div`
   opacity: 0.85;
   min-height: 100vh;
 `;
-const PriceWrapper = styled.div`
-  width: 170px;
-  background-color: #383838;
+const Cards = styled.div`
+  margin-top: 150px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 const Wrapper = styled.div`
-  position: relative;
-  padding-top: 10px;
-  margin-left: 40px;
+  margin-top: 20px;
   z-index: 1;
   display: flex;
   min-width: 170px;
 `;
-// const WrapperReturn = styled.div``;
-const Image = styled.img`
-  width: 170px;
-  height: 220px;
+const GameWrapper = styled.div`
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  padding: 20px 20px 20px 20px;
+  background: rgba(0, 0, 0, 0.5);
+`;
+const ImgWrapper = styled.div`
+  height: 250px;
+  width: 200px;
+`;
+const Img = styled.img`
+  height: 250px;
+  width: 200px;
   object-fit: cover;
 `;
-const Title = styled.div`
-  color: white;
-  font-size: 12px;
+const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 10px;
 `;
-const SalePrice = styled.p`
+const Name = styled.div`
+  font-size: 25px;
   color: white;
-  font-size: 12px;
 `;
-const Info = styled.div`
+const Description = styled.div`
+  margin-top: 20px;
+  font-size: 15px;
   color: white;
-  width: 500px;
-  padding-left: 3%;
-  padding-top: 5%;
+  max-width: 600px;
+`;
+const Details = styled.div`
+  width: 100%;
+  display: flex;
+  margin-left: 50px;
+  margin-top: 40px;
+  justify-content: space-between;
+`;
+const Category = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 30px;
+  font-size: 20px;
+  color: white;
+  border: 1px white solid;
+`;
+const PriceWrapper = styled.div`
+  margin-right: 30px;
+  margin-top: 2px;
+  display: flex;
+`;
+const Price = styled.div`
+  color: white;
+  font-size: 25px;
+  margin-top: 5px;
+`;
+const Sale = styled.div`
+  color: #86dc3d;
+  font-size: 25px;
+  background-color: #495e35;
+  margin-right: 10px;
+  height: 20px;
+  padding: 3px;
+  padding-bottom: 7px;
+`;
+const Cart = styled.button`
+  width: 100px;
+  font-size: 15px;
+  padding: 4px;
+  color: white;
+  background-color: #0066cc;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+`;
+const Entrance = styled.div``;
+const H2 = styled.h2`
+  color: white;
+  font-size: 25px;
 `;
 
-const Action = () => {
+const Simulation = () => {
   const { games } = useContext(GamesContext);
 
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <Container>
         <Container2>
           <Container3></Container3>
         </Container2>
       </Container>
-      {games.map((item, itemIndex) => {
-        let content = null;
-        let info = null;
 
-        if (item.category === "Simulation") {
-          if (item.sale < 0) {
-            content = (
-              <PriceWrapper key={item._id}>
-                <Image src={item.contentImage} />
-                <Title>{item.title}</Title>
-                <SalePrice>
-                  {item.sale}% ${item.salePrice}
-                </SalePrice>
-              </PriceWrapper>
-            );
+      <Cards>
+        <Entrance>
+          <H2>Simulation Games</H2>
+        </Entrance>
+        {games.map((item, itemIndex) => {
+          let content = null;
+
+          if (item.category === "Simulation") {
+            if (item.sale < 0) {
+              content = (
+                <GameWrapper key={itemIndex}>
+                  <ImgWrapper>
+                    <Img src={item.contentImage} />
+                  </ImgWrapper>
+                  <InfoWrapper>
+                    <Name>{item.title}</Name>
+                    <Description>{item.description}</Description>
+                    <Details>
+                      <Category>{item.category}</Category>
+                      <PriceWrapper>
+                        <Sale>{item.sale}%</Sale>
+                        <Price>${item.salePrice}</Price>
+                      </PriceWrapper>
+                    </Details>
+                    <Cart>Add to Cart</Cart>
+                  </InfoWrapper>
+                </GameWrapper>
+              );
+            } else {
+              content = (
+                <GameWrapper key={itemIndex}>
+                  <ImgWrapper>
+                    <Img src={item.contentImage} />
+                  </ImgWrapper>
+                  <InfoWrapper>
+                    <Name>{item.title}</Name>
+                    <Description>{item.description}</Description>
+                    <Details>
+                      <Category>{item.category}</Category>
+                      <PriceWrapper>
+                        <Price>${item.price}</Price>
+                      </PriceWrapper>
+                    </Details>
+                    <Cart>Add to Cart</Cart>
+                  </InfoWrapper>
+                </GameWrapper>
+              );
+            }
           } else {
-            content = (
-              <PriceWrapper key={item._id}>
-                <Image src={item.contentImage} />
-                <Title>{item.title}</Title>
-                <SalePrice>${item.price}</SalePrice>
-              </PriceWrapper>
-            );
+            return null;
           }
-        }
 
-        if (item.category === "Simulation") {
-          info = <Info>{item.description}</Info>;
-        }
-
-        return (
-          <Wrapper>
-            {/* <WrapperReturn> */}
-            {content}
-            {info}
-            {/* </WrapperReturn> */}
-          </Wrapper>
-        );
-      })}
+          return <Wrapper>{content}</Wrapper>;
+        })}
+      </Cards>
     </div>
   );
 };
 
-export default Action;
+export default Simulation;

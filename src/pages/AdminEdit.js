@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const Container = styled.div`
   position: absolute;
@@ -50,8 +51,9 @@ const Save = styled.button`
 const AdminEdit = () => {
   const history = useHistory();
   const params = useParams();
-  const [imageCompiler, setImageCompiler] = useState("");
-  const [foundGame, setFoundGame] = useState({});
+  const location = useLocation();
+  console.log("location: ", location);
+  const [foundGame, setFoundGame] = useState(location.state.item);
   const [formData, setFormData] = useState({
     title: foundGame.title,
     contentImage: foundGame.contentImage,
@@ -62,14 +64,15 @@ const AdminEdit = () => {
     salePrice: foundGame.salePrice,
     category: foundGame.category,
   });
+  const [imageCompiler, setImageCompiler] = useState(foundGame.images);
 
   console.log("params:", params);
 
-  useEffect(() => {
-    axios(
-      `https://game-shop-4real.herokuapp.com/api/games/${params.game_id}`
-    ).then((response) => setFoundGame(response.data));
-  }, [params]);
+  // useEffect(() => {
+  //   axios(
+  //     `https://game-shop-4real.herokuapp.com/api/games/${params.game_id}`
+  //   ).then((response) => setFoundGame(response.data));
+  // }, [params]);
 
   console.log("foundGame: ", foundGame);
   console.log("formData: ", formData);
@@ -107,6 +110,9 @@ const AdminEdit = () => {
   const handleInputChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
+  const handleImageInputChange = (event) => {
+    setImageCompiler(event.target.value);
+  };
 
   // const addImages = () => {
   //   setFormData({
@@ -141,17 +147,6 @@ const AdminEdit = () => {
                 value={formData.contentImage}
                 onChange={handleInputChange}
               />
-            </WrapperElement>
-
-            <WrapperElement>
-              <Label>Image:</Label>
-              <Input
-                type="text"
-                name="imageCompiler"
-                value={imageCompiler}
-                onChange={(event) => setImageCompiler(event.target.value)}
-              />
-              <button type="button">Compile</button>
             </WrapperElement>
 
             <WrapperElement>

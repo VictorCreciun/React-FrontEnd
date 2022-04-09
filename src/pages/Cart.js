@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { WishlistContext } from "../contexts/WishlistsContext";
+import { CartContext } from "../contexts/CartContext";
 import bgImage from "../images/img6.jpg";
 
 const Container = styled.div`
@@ -99,25 +99,15 @@ const Sale = styled.div`
   padding: 3px;
   padding-bottom: 7px;
 `;
-const Cart = styled.button`
-  width: 100px;
-  font-size: 15px;
-  padding: 4px;
-  color: white;
-  background-color: #0066cc;
-  border: none;
-  margin-top: 20px;
-  cursor: pointer;
-`;
 
-const Wishlist = () => {
-  const { wishlist } = useContext(WishlistContext);
+const Cart = () => {
+  const { cart } = useContext(CartContext);
 
   const authUser = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
 
-  console.log("wishlist: ", wishlist);
+  console.log("cart: ", cart);
 
   return (
     <div>
@@ -128,10 +118,10 @@ const Wishlist = () => {
       </Container>
 
       <Wrapper>
-        {wishlist.map((item, index) => {
+        {cart.map((item, index) => {
           return (
             <div key={index}>
-              {authUser.wishlistCode === item.user.wishlistCode ? (
+              {authUser.cartCode === item.user.cartCode ? (
                 <User key={item._id}>
                   {item.games.map((game, index) => {
                     if (game.sale < 0) {
@@ -183,7 +173,7 @@ const Wishlist = () => {
   );
 };
 
-export default Wishlist;
+export default Cart;
 
 {
   /* // {wishlist.map((item) => {

@@ -73,24 +73,16 @@ const MenuWrapper = styled.ul`
   display: flex;
 `;
 const Home = styled.li`
-  margin-left: 200px;
-  list-style-type: none;
-`;
-const Products = styled.li`
-  margin-left: 200px;
+  margin-left: 100px;
   list-style-type: none;
 `;
 const Categories = styled.li`
-  margin-left: 200px;
-  list-style-type: none;
-`;
-const SaleGames = styled.li`
-  margin-left: 200px;
+  margin-left: 100px;
   list-style-type: none;
 `;
 const Button = styled.button`
   font-size: 20px;
-  color: #0dd0ec;
+  color: white;
   background: none;
   border: none;
   cursor: pointer;
@@ -141,9 +133,6 @@ const Menu = () => {
         <Home>
           <Button>Home</Button>
         </Home>
-        <Products>
-          <Button>All Games</Button>
-        </Products>
         <Categories
           onMouseEnter={() => setDropdown(false)}
           onMouseLeave={() => setDropdown(true)}
@@ -245,10 +234,6 @@ const Menu = () => {
             </Dropdown>
           )}
         </Categories>
-
-        <SaleGames>
-          <Button>Games on Sale</Button>
-        </SaleGames>
       </MenuWrapper>
 
       <SearchZone>

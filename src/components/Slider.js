@@ -95,6 +95,18 @@ const Slider = ({ slides }) => {
 
   return (
     <Container>
+      {/* <div
+        style={{
+          position: "relative",
+          zIndex: "1",
+          bottom: "300px",
+          left: "50px",
+          fontSize: "30px",
+          color: "white",
+        }}
+      >
+        Games on Sale
+      </div> */}
       <FaArrowAltCircleLeft
         style={{
           visibility: current === 0 ? "hidden" : "visible",

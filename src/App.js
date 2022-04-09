@@ -13,13 +13,15 @@ import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import GamesProvider from "./contexts/GamesContext";
 import UsersProvider from "./contexts/UsersContext";
-import WishlistsProvider from "./contexts/WishlistsContext";
+import WishlistProvider from "./contexts/WishlistsContext";
+import CartProvider from "./contexts/CartContext";
 import Wishlist from "./pages/Wishlist";
 import PrivateRoute, { AdminRoute } from "./components/PrivateRoute";
 import { useState, useEffect } from "react";
 import Admin from "./pages/Admin";
 import AdminAdd from "./pages/AdminAdd";
 import AdminEdit from "./pages/AdminEdit";
+import Cart from "./pages/Cart";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -63,65 +65,72 @@ const App = () => {
   return (
     <div>
       <GamesProvider>
-        <UsersProvider>
-          <Navbar
-            handleLogOutClick={handleLogOutClick}
-            isAuthenticated={isAuthenticated}
-            // isAdmin={isAdmin}
-          />
+        <Navbar
+          handleLogOutClick={handleLogOutClick}
+          isAuthenticated={isAuthenticated}
+          // isAdmin={isAdmin}
+        />
 
-          <Switch>
-            <Route exact path="/" component={Home}></Route>
-            <Route
-              exact
-              path="/admin"
-              // isAdmin={isAdmin}
-              // isAuthenticated={isAuthenticated}
-              // render={(props) => <Admin {...props} />}
-              component={Admin}
-            ></Route>
-            <Route
-              exact
-              path="/admin/add"
-              // isAdmin={isAdmin}
-              // isAuthenticated={isAuthenticated}
-              // render={(props) => <AdminAdd {...props} />}
-              component={AdminAdd}
-            ></Route>
-            <Route
-              exact
-              path="/admin/edit/:game_id"
-              // isAdmin={isAdmin}
-              // isAuthenticated={isAuthenticated}
-              // render={(props) => <AdminEdit {...props} />}
-              component={AdminEdit}
-            ></Route>
-            <Route exact path="/action" component={Action}></Route>
-            <Route exact path="/first-person" component={FirstPerson}></Route>
-            <Route exact path="/horror" component={Horror}></Route>
-            <Route exact path="/racing" component={Racing}></Route>
-            <Route exact path="/shooter" component={Shooter}></Route>
-            <Route exact path="/simulation" component={Simulation}></Route>
-            <Route exact path="/sport" component={Sport}></Route>
-            <Route exact path="/survival" component={Survival}></Route>
-            <Route
-              exact
-              path="/login"
-              render={(props) => (
-                <User {...props} setIsAuthenticated={setIsAuthenticated} />
-              )}
-            ></Route>
-            <Route exact path="/register" component={Register}></Route>
-            <WishlistsProvider>
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route
+            exact
+            path="/admin"
+            // isAdmin={isAdmin}
+            // isAuthenticated={isAuthenticated}
+            // render={(props) => <Admin {...props} />}
+            component={Admin}
+          ></Route>
+          <Route
+            exact
+            path="/admin/add"
+            // isAdmin={isAdmin}
+            // isAuthenticated={isAuthenticated}
+            // render={(props) => <AdminAdd {...props} />}
+            component={AdminAdd}
+          ></Route>
+          <Route
+            exact
+            path="/admin/edit/:game_id"
+            // isAdmin={isAdmin}
+            // isAuthenticated={isAuthenticated}
+            // render={(props) => <AdminEdit {...props} />}
+            component={AdminEdit}
+          ></Route>
+          <Route exact path="/action" component={Action}></Route>
+          <Route exact path="/first-person" component={FirstPerson}></Route>
+          <Route exact path="/horror" component={Horror}></Route>
+          <Route exact path="/racing" component={Racing}></Route>
+          <Route exact path="/shooter" component={Shooter}></Route>
+          <Route exact path="/simulation" component={Simulation}></Route>
+          <Route exact path="/sport" component={Sport}></Route>
+          <Route exact path="/survival" component={Survival}></Route>
+          <Route
+            exact
+            path="/login"
+            render={(props) => (
+              <User {...props} setIsAuthenticated={setIsAuthenticated} />
+            )}
+          ></Route>
+          <Route exact path="/register" component={Register}></Route>
+          <WishlistProvider>
+            <CartProvider>
               <PrivateRoute
                 exact
                 path="/wishlist"
                 isAuthenticated={isAuthenticated}
                 render={(props) => <Wishlist {...props} />} //render = redirect ( component={...} )
               ></PrivateRoute>
-            </WishlistsProvider>
-          </Switch>
-        </UsersProvider>
+
+              <PrivateRoute
+                exact
+                path="/cart"
+                isAuthenticated={isAuthenticated}
+                render={(props) => <Cart {...props} />} //render = redirect ( component={...} )
+              ></PrivateRoute>
+            </CartProvider>{" "}
+          </WishlistProvider>
+        </Switch>
       </GamesProvider>
     </div>
   );

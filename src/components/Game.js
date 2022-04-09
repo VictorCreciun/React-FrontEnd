@@ -34,8 +34,8 @@ const Hover = styled.div`
   position: absolute;
   background-color: #dbe2e9;
   width: 300px;
-  margin-left: 355px;
-  margin-top: 25px;
+  /* margin-left: 355px;
+  margin-top: 25px; */
   z-index: 1;
   transition: 1s ease;
 `;

@@ -1,26 +1,26 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
 
-export const WishlistsContext = createContext();
+export const WishlistContext = createContext();
 
-const WishlistsProvider = ({ children }) => {
-  const [wishlists, setWishlists] = useState([]);
-
-  console.log(wishlists);
+const WishlistProvider = ({ children }) => {
+  const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
     axios("https://game-shop-4real.herokuapp.com/api/wishlist").then(
-      (response) => setWishlists(response.data)
+      (response) => {
+        setWishlist(response.data);
+      }
     );
   }, []);
 
-  const value = { wishlists };
+  const value = { wishlist };
 
   return (
-    <WishlistsContext.Provider value={value}>
+    <WishlistContext.Provider value={value}>
       {children}
-    </WishlistsContext.Provider>
+    </WishlistContext.Provider>
   );
 };
 
-export default WishlistsProvider;
+export default WishlistProvider;

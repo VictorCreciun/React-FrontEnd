@@ -25,7 +25,7 @@ const Container3 = styled.div`
 `;
 const Banner = styled.div`
   position: absolute;
-  left: 25%;
+  left: 30%;
   top: 40%;
   z-index: 1;
 `;

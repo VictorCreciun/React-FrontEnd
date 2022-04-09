@@ -4,6 +4,7 @@ import { useHistory, Link } from "react-router-dom";
 import MyImg from "../img/4Real.png";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PersonIcon from "@mui/icons-material/Person";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Container = styled.div`
   position: absolute;
@@ -44,9 +45,13 @@ const Wishlist = styled.button`
   color: seashell;
   background: none;
 `;
-// const WishList = styled.div`
-//   cursor: pointer;
-// `;
+const Cart = styled.button`
+  cursor: pointer;
+  padding-left: 25px;
+  border: none;
+  color: seashell;
+  background: none;
+`;
 const AccountIcon = styled.div`
   cursor: pointer;
   padding-left: 25px;
@@ -114,10 +119,19 @@ const Navbar = ({ handleLogOutClick, isAuthenticated }) => {
                 history.push("/wishlist");
               }}
             >
-              {/* <Badge badgeContent={4} color="primary"> */}
               <FavoriteBorderIcon />
-              {/* </Badge> */}
             </Wishlist>
+          ) : null}
+
+          {/* Cart */}
+          {isAuthenticated ? (
+            <Cart
+              onClick={() => {
+                history.push("/cart");
+              }}
+            >
+              <ShoppingCartIcon />
+            </Cart>
           ) : null}
         </Right>
       </Wrapper>

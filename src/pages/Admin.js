@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { GamesContext } from "../contexts/GamesContext";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: absolute;
@@ -40,10 +41,16 @@ const Admin = () => {
         {games.map((item) => (
           <Wrapper>
             <ButtonContainer>
-              <Edit onClick={() => history.push(`/admin/edit/${item._id}`)}>
-                Edit
-              </Edit>
-              <Delete onClick={deleteGame(item._id)}>Delete</Delete>
+              <Link
+                to={{
+                  pathname: `/admin/edit/${item._id}`,
+                  state: { item: item },
+                }}
+              >
+                <Edit>Edit</Edit>
+              </Link>
+
+              {/* <Delete onClick={deleteGame(item._id)}>Delete</Delete> */}
             </ButtonContainer>
 
             <Image src={item.contentImage} />
