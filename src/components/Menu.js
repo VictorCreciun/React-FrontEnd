@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { GamesContext } from "../contexts/GamesContext";
+import { Link } from "react-router-dom";
+import "./Menu.css";
 
 const Section = styled.section`
   position: absolute;
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   margin-top: 100px;
   width: 100%;
   z-index: 1;
@@ -66,10 +68,60 @@ const X = styled.button`
   right: 12%;
   cursor: pointer;
 `;
+const MenuWrapper = styled.ul`
+  margin-left: 100px;
+  display: flex;
+`;
+const Home = styled.li`
+  margin-left: 200px;
+  list-style-type: none;
+`;
+const Products = styled.li`
+  margin-left: 200px;
+  list-style-type: none;
+`;
+const Categories = styled.li`
+  margin-left: 200px;
+  list-style-type: none;
+`;
+const SaleGames = styled.li`
+  margin-left: 200px;
+  list-style-type: none;
+`;
+const Button = styled.button`
+  font-size: 20px;
+  color: #0dd0ec;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
+const Dropdown = styled.div`
+  position: relative;
+  right: 35px;
+  top: 10px;
+`;
+const Elements = styled.li`
+  background: #dbe2e9;
+  cursor: pointer;
+`;
+const Item = styled.div`
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  text-decoration: none;
+  font-size: 17px;
+  color: black;
+  padding: 10px;
+  &:hover {
+    background: #adb4ba;
+  }
+`;
 
 const Menu = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredGames, setFilteredGames] = useState([]);
+  const [dropDown, setDropdown] = useState(true);
+
   console.log("searchInput: ", searchInput);
 
   const { games } = useContext(GamesContext);
@@ -85,6 +137,120 @@ const Menu = () => {
 
   return (
     <Section>
+      <MenuWrapper>
+        <Home>
+          <Button>Home</Button>
+        </Home>
+        <Products>
+          <Button>All Games</Button>
+        </Products>
+        <Categories
+          onMouseEnter={() => setDropdown(false)}
+          onMouseLeave={() => setDropdown(true)}
+        >
+          <Button>Categories</Button>
+          {!dropDown && (
+            <Dropdown>
+              <ul
+                style={{
+                  maxWidth: "150px",
+                  position: "relative",
+                  listStyle: "none",
+                  textAlign: "start",
+                }}
+                className={dropDown ? "dropdown clicked" : "dropdown"}
+                onClick={() => setDropdown(!dropDown)}
+              >
+                <Elements>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to="/action"
+                  >
+                    <Item onClick={() => setDropdown(false)}>Action</Item>
+                  </Link>
+                </Elements>
+                <Elements>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to="/first-person"
+                  >
+                    <Item onClick={() => setDropdown(false)}>First-Person</Item>
+                  </Link>
+                </Elements>
+                <Elements>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to="/sport"
+                  >
+                    <Item onClick={() => setDropdown(false)}>Sport</Item>
+                  </Link>
+                </Elements>
+                <Elements>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to="/horror"
+                  >
+                    <Item onClick={() => setDropdown(false)}>Horror</Item>
+                  </Link>
+                </Elements>
+                <Elements>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to="/shooter"
+                  >
+                    <Item onClick={() => setDropdown(false)}>Shooter</Item>
+                  </Link>
+                </Elements>
+                <Elements>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to="/racing"
+                  >
+                    <Item onClick={() => setDropdown(false)}> Racing</Item>
+                  </Link>
+                </Elements>
+                <Elements>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to="/simulation"
+                  >
+                    <Item onClick={() => setDropdown(false)}>Simulation</Item>
+                  </Link>
+                </Elements>
+                <Elements>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to="/survival"
+                  >
+                    <Item onClick={() => setDropdown(false)}>Survival</Item>
+                  </Link>
+                </Elements>
+              </ul>
+            </Dropdown>
+          )}
+        </Categories>
+
+        <SaleGames>
+          <Button>Games on Sale</Button>
+        </SaleGames>
+      </MenuWrapper>
+
       <SearchZone>
         <SearchContainer>
           <Input value={searchInput} type="text" onChange={handleInputChange} />
